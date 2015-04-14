@@ -1,4 +1,9 @@
-<h1>All Posts</h1>
+<h1>The Jackhuahuas</h1>
+
+<% if policy(Post.new).create? %>
+  <%= link_to "Add your dog", new_post_path, class: 'btn btn-success' %>
+<% end %>
+
 <% @posts.each do |post| %>
    <div class="media">
      <div class="media-body">
@@ -7,7 +12,6 @@
        </h4>
 	       <small>
 	         submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.name %><br>
-	         <%= post.comments.count %> Comments
 	       </small>
      </div>
    </div>
