@@ -17,6 +17,10 @@
      <%= f.label :body %>
      <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter post body" %>
    <% end %>
+  <%= form_group_tag(post.errors[:image]) do %>
+    <%= f.label :image %>
+    <%= f.file_field :image, rows: 1, class: 'form-control', placeholder: "Upload image" %>
+  <% end %>
    <div class="form-group">
     <%= f.hidden_field :topic_id, value: @topic.id %>
      <%= f.submit "Save", class: 'btn btn-success' %>

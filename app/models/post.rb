@@ -2,6 +2,8 @@ class Post < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :topic
 
+	mount_uploader :image
+
 	default_scope { order('created_at DESC') }
 	scope :visible_to, -> (user) { user ? all : joins(:topic).where('topics.public' => true) }
 
