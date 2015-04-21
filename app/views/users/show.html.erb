@@ -23,7 +23,20 @@
      </ul>
      <div class="tab-content">
        <div class="tab-pane active" id="posts">
-         <%= render @posts %>
+          <% @posts.each do |post| %>
+            <div class="media">
+               <div class="media-body">
+                 <h4 class="media-heading">
+                   <%= link_to (markdown_to_html post.title), topic_post_path(post.topic_id, post) %>
+                 </h4>
+                   <small>
+                     <%= image_tag(post.user.avatar.tiny.url) if post.user.avatar? %>
+                     submitted <%= time_ago_in_words(post.created_at) %> ago by
+                     <%= post.user.name %><br>
+                   </small>
+               </div>
+              </div>
+          <% end %>
        </div>
      </div>
    </div>

@@ -7,9 +7,7 @@
  <div class="row">
    <div class="col-md-8">
      <p class="lead"><%= @topic.description %></p>
-     <% @posts.each do |post| %>
        <%= render @posts %>
-     <% end %>
    </div>
    <div class="col-md-4">
      <% if policy(Post.new).create? %>
