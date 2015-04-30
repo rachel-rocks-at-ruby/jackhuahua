@@ -31,6 +31,7 @@ GEM
     bcrypt (3.1.7)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
+    breadcrumbs_on_rails (2.3.0)
     builder (3.2.2)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
@@ -186,6 +187,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass (= 3.2.0.2)
+  breadcrumbs_on_rails
   carrierwave
   coffee-rails (~> 4.0.0)
   devise

@@ -8,6 +8,8 @@ class PostsController < ApplicationController
     @topic = Topic.find(params[:topic_id])
   	@post = Post.find(params[:id])
     authorize @post
+
+    add_breadcrumb "Back to #{@topic.name}'s page", topic_path(@topic)
   end
 
   def new
