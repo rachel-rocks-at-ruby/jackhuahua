@@ -2,11 +2,10 @@
  
  <div class="row">
    <div class="col-md-4">
-     <p>Guidelines for posts:</p>
+     <p>Guidelines for posting Jackhuahuas:</p>
      <ul>
        <li>This is a family friendly site.</li>
        <li>Never insult dogs.</li>
-       <li>Smile when you type.</li>
      </ul>
    </div>
    <div class="col-md-8">
@@ -17,12 +16,12 @@
        </div>
        <div class="form-group">
          <%= f.label :description %>
-         <%= f.text_area :description, rows: 8, class: 'form-control', placeholder: "Enter topic description" %>
+         <%= f.text_area :description, rows: 8, class: 'form-control', placeholder: "Tell us a little about your Jackhuahua" %>
        </div>
        <div class="form-group">
-         <%= f.label :public, class: 'checkbox' do %>
-           <%= f.check_box :public %> Public topic
-         <% end %>
+         <%#= f.label :public, class: 'checkbox' do %>
+           <%#= f.check_box :public %>
+         <%# end %>
        </div>
        <%= f.submit "Save", class: 'btn btn-success' %>
      <% end %>
