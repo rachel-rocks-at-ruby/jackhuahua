@@ -8,7 +8,22 @@
        <%= @post.user.name %>
      </small>
      <%#= image_tag(@post.image.url) if @post.image? %>
-     <div><%= filepicker_image_tag @post.filepicker_url, w: 160, h: 160, fit: 'clip' %></div>
+     <div id="images"><%#= filepicker_image_tag @post.filepicker_url, w: 160, h: 160, fit: 'clip' %></div>
+
+
+     <script>
+        var urls = "<%= @post.filepicker_url %>";
+
+        var url_array = urls.split(",");
+
+        console.log(url_array)
+
+        $.each(url_array, function(index, value){
+          $("#images").append("<img src='" + value +"'>")
+        })
+
+
+     </script>
     <p><%= markdown_to_html @post.body %></p>
   </div>
   <div class="col-md-4">
