@@ -5,7 +5,7 @@ class TopicPolicy < ApplicationPolicy
    end
  
    def create?
-     user.present? || user.admin?
+     user.present?
    end
  
    def update?

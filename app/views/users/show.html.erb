@@ -9,7 +9,7 @@
        <div class="media-body">
          <h2 class="media-heading"><%= @user.name %></h2>
          <small>
-           <%= pluralize(@user.posts.count, 'post') %>
+           <%= pluralize(@user.posts.count, 'gallery') %>
          </small>
        </div>
      </div>
@@ -19,7 +19,7 @@
  <div class="row">
    <div class="tabbable tabs-left">
      <ul class="nav nav-tabs">
-       <li class="active"><a href="#posts" data-toggle="tab">Posts</a></li>
+       <li class="active"><a href="#posts" data-toggle="tab">Galleries</a></li>
      </ul>
      <div class="tab-content">
        <div class="tab-pane active" id="posts">
