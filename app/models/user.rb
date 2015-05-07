@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
 
   has_many :posts
   has_many :topics
+  has_many :friendships, dependent: :destroy
+  has_many :friends, :through => :friendships
+  has_many :favorites, dependent: :destroy
 
   mount_uploader :avatar, AvatarUploader
 

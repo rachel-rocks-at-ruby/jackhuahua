@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :topic
+	has_many :favorites, :as => :favorable, dependent: :destroy
 
 	mount_uploader :image
 

@@ -7,6 +7,8 @@ class PostsController < ApplicationController
   def show
     @topic = Topic.find(params[:topic_id])
   	@post = Post.find(params[:id])
+    @favorite = @post.favorites.where(user_id: current_user.id).first
+    @new_favorite = Favorite.new
     authorize @post
 
     add_breadcrumb "Back to #{@topic.name}'s page", topic_path(@topic)

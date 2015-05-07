@@ -24,9 +24,9 @@ class TopicsController < ApplicationController
      @topic = current_user.topics.build(topic_params)
      authorize @topic
      if @topic.save
-       redirect_to @topic, notice: "Topic was saved successfully."
+       redirect_to @topic, notice: "#{@topic.name} was saved successfully."
      else
-       flash[:error] = "Error creating topic. Please try again."
+       flash[:error] = "Error adding dog. Please try again."
        render :new
      end
    end
@@ -37,7 +37,7 @@ class TopicsController < ApplicationController
      if @topic.update_attributes(topic_params)
        redirect_to @topic
      else
-       flash[:error] = "Error saving topic. Please try again."
+       flash[:error] = "Error saving dog. Please try again."
        render :edit
      end
    end
@@ -50,7 +50,7 @@ class TopicsController < ApplicationController
        flash[:notice] = "\"#{@topic.name}\" was deleted successfully."
        redirect_to topics_path
      else
-       flash[:error] = "There was an error deleting the topic."
+       flash[:error] = "There was an error removing the dog."
        render :show
      end
    end

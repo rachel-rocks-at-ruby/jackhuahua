@@ -1,0 +1,14 @@
+<h1>The Jackhuahua Community</h1>
+<article>Reach out to the other dogs here!<br>
+Friend, favorite, and message each other.</article>
+
+<% @users.each do |user| %>
+   <div class="media">
+     <div class="media-body">
+       <h4 class="media-heading">
+        <%= image_tag(user.avatar.tiny.url) if user.avatar? %>
+         <%= link_to user.name, user %>
+       </h4>
+     </div>
+   </div>
+<% end %>

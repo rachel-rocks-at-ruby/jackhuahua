@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150504191417) do
+ActiveRecord::Schema.define(version: 20150507033017) do
 
   create_table "documents", force: true do |t|
     t.integer  "user_id"
@@ -24,6 +24,23 @@ ActiveRecord::Schema.define(version: 20150504191417) do
   end
 
   add_index "documents", ["user_id"], name: "index_documents_on_user_id"
+
+  create_table "favorites", force: true do |t|
+    t.integer  "favorable_id"
+    t.string   "favorable_type"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "favorites", ["user_id"], name: "index_favorites_on_user_id"
+
+  create_table "friendships", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "posts", force: true do |t|
     t.string   "title"

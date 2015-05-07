@@ -3,6 +3,7 @@
  <% if policy(@topic).update? %>
    <%= link_to "Edit #{@topic.name}", edit_topic_path, class: 'btn btn-success' %>
  <% end %>
+ <%= render partial: 'users/follow' %>
  
  <div class="row">
    <div class="col-md-8">

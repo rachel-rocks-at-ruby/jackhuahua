@@ -1,0 +1,16 @@
+<div class="favorite">
+
+  <% if @favorite %>
+    <%= link_to favorite_path(@favorite), method: :delete, class: 'btn btn-danger' do %>
+      <i class="glyphicon glyphicon-star-empty"> </i>&nbsp; Unfavorite
+    <% end %>
+  <% else %>
+    <%= form_for Favorite.new do |f| %>
+      <%= f.hidden_field :favorable_id, value: favorable.id %>
+      <%= f.hidden_field :favorable_type, value: favorable.class %>
+      <%= button_tag(:class => 'btn btn-primary') do %>
+        <i class="glyphicon glyphicon-star">&nbsp; Favorite</i>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

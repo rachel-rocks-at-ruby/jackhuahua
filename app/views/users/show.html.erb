@@ -8,8 +8,9 @@
        <% end %>
        <div class="media-body">
          <h2 class="media-heading"><%= @user.name %></h2>
+         <%= render partial: 'users/follow' %><br>
          <small>
-           <%= pluralize(@user.posts.count, 'gallery') %>
+           <%#= pluralize(@user.posts.count, 'gallery') %>
          </small>
        </div>
      </div>
