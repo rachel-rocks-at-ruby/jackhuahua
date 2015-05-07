@@ -12,6 +12,7 @@ class TopicsController < ApplicationController
   def show
      @topic = Topic.find(params[:id])
      @posts = @topic.posts.paginate(page: params[:page], per_page: 10)
+     @friend_if = current_user.friendships.where(friend_id: @topic.id)
      authorize @topic
   end
 

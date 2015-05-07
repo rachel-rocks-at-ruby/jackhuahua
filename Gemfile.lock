@@ -122,6 +122,8 @@ GEM
     pg (0.18.1)
     pundit (0.3.0)
       activesupport (>= 3.0.0)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
     rack (1.5.2)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -201,6 +203,7 @@ DEPENDENCIES
   mini_magick
   pg
   pundit
+  quiet_assets
   rails (= 4.1.6)
   rails_12factor
   redcarpet

@@ -7,7 +7,8 @@ class PostsController < ApplicationController
   def show
     @topic = Topic.find(params[:topic_id])
   	@post = Post.find(params[:id])
-    @favorite = @post.favorites.where(user_id: current_user.id).first
+
+    @favorite = @post.favorites.where(user_id: current_user.id).first if current_user
     @new_favorite = Favorite.new
     authorize @post
 

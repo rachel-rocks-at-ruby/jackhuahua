@@ -10,6 +10,7 @@ gem 'rails', '4.1.6'
  end
  
  group :development do
+ 	gem 'quiet_assets'
    gem 'sqlite3'
  end
 
