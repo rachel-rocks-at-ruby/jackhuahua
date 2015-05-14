@@ -1,0 +1,14 @@
+<% @galleries.each do |gallery| %>
+ <div class="media">
+   <div class="media-body">
+     <h4 class="media-heading">
+       <%= link_to (markdown_to_html gallery.title), user_gallery_path(gallery.user_id, gallery) %>
+     </h4>
+       <small>
+         <%= image_tag(gallery.user.avatar.tiny.url) if gallery.user.avatar? %>
+         submitted <%= time_ago_in_words(gallery.created_at) %> ago by
+         <%= gallery.user.name %><br>
+       </small>
+   </div>
+  </div>
+<% end %>

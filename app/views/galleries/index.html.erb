@@ -1,0 +1,18 @@
+<h1>The Jackhuahuas</h1>
+
+<% if policy(Gallery.new).create? %>
+  <%= link_to "Add your dog", new_gallery_path, class: 'btn btn-success' %>
+<% end %>
+
+<% @galleries.each do |gallery| %>
+   <div class="media">
+     <div class="media-body">
+       <h4 class="media-heading">
+         <%= link_to gallery.title, gallery %>
+       </h4>
+	       <small>
+	         submitted <%= time_ago_in_words(gallery.created_at) %> ago by <%= gallery.user.name %><br>
+	       </small>
+     </div>
+   </div>
+<% end %>

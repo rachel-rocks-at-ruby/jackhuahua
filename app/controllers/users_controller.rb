@@ -1,5 +1,5 @@
  class UsersController < ApplicationController
-   before_action :authenticate_user!, except: [:show]
+   before_action :authenticate_user!, except: [:index, :show]
  
    def update
      if current_user.update_attributes(user_params)
@@ -17,15 +17,16 @@
 
    def show
      @user = User.find(params[:id])
-     @posts = @user.posts.visible_to(current_user)
+     @galleries = @user.galleries
      @friends = Friendship.where(user_id: @user.id)
      @friend = Friendship.where(user_id: @user.id).first
-     @friend_if = Friendship.where(user_id: current_user.id).first
+     @favorites = Favorite.where(user_id: @user.id)
+     #@friend_if = Friendship.where(user_id: current_user.id).first
    end
  
    private
  
    def user_params
-     params.require(:user).permit(:name, :avatar)
+     params.require(:user).permit(:name, :avatar, :role, :description, :location)
    end
  end

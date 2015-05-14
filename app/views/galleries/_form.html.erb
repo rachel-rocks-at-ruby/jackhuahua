@@ -1,0 +1,28 @@
+ <%= form_for [user, gallery] do |f| %>
+   <% if gallery.errors.any? %>
+     <div class="alert alert-danger">
+       <h4>There are <%= pluralize(gallery.errors.count, "error") %>.</h4>
+       <ul>
+         <% gallery.errors.full_messages.each do |msg| %>
+           <li><%= msg %></li>
+         <% end %>
+       </ul>
+     </div>
+   <% end %>
+   <%= form_group_tag(gallery.errors[:title]) do %>
+     <%= f.label :title %>
+     <%= f.text_field :title, class: 'form-control', placeholder: "Enter gallery title" %>
+   <% end %>
+   <%= form_group_tag(gallery.errors[:body]) do %>
+     <%= f.label :body %>
+     <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter gallery body" %>
+   <% end %>
+  <%= form_group_tag(gallery.errors[:image]) do %>
+    <%= f.label :filepicker_url, "Upload photos to gallery" %>
+    <%= f.filepicker_field :filepicker_url, multiple: true, rows: 1, class: 'form-control', placeholder: "Upload photos" %>
+  <% end %>
+   <div class="form-group">
+    <%= f.hidden_field :user_id, value: @user.id %>
+     <%= f.submit "Save", class: 'btn btn-success' %>
+   </div>
+ <% end %>

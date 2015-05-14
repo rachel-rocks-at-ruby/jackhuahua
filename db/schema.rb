@@ -11,19 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150507033017) do
-
-  create_table "documents", force: true do |t|
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "add_attachment_file_name"
-    t.string   "add_attachment_content_type"
-    t.integer  "add_attachment_file_size"
-    t.datetime "add_attachment_updated_at"
-  end
-
-  add_index "documents", ["user_id"], name: "index_documents_on_user_id"
+ActiveRecord::Schema.define(version: 20150509181950) do
 
   create_table "favorites", force: true do |t|
     t.integer  "favorable_id"
@@ -42,31 +30,17 @@ ActiveRecord::Schema.define(version: 20150507033017) do
     t.datetime "updated_at"
   end
 
-  create_table "posts", force: true do |t|
+  create_table "galleries", force: true do |t|
     t.string   "title"
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "topic_id"
     t.string   "image"
-    t.integer  "document_id"
     t.string   "filepicker_url"
   end
 
-  add_index "posts", ["topic_id"], name: "index_posts_on_topic_id"
-  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
-
-  create_table "topics", force: true do |t|
-    t.string   "name"
-    t.boolean  "public",      default: true
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-  end
-
-  add_index "topics", ["user_id"], name: "index_topics_on_user_id"
+  add_index "galleries", ["user_id"], name: "index_galleries_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -88,8 +62,12 @@ ActiveRecord::Schema.define(version: 20150507033017) do
     t.datetime "updated_at"
     t.string   "role"
     t.string   "avatar"
+    t.string   "description"
+    t.string   "location"
+    t.date     "birthday"
   end
 
+  add_index "users", ["birthday"], name: "index_users_on_birthday"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 

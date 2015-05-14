@@ -8,36 +8,50 @@
        <% end %>
        <div class="media-body">
          <h2 class="media-heading"><%= @user.name %></h2>
-         <%= render partial: 'users/follow' %><br>
+         <%#= render partial: 'users/follow' %><br>
          <small>
            <%#= pluralize(@user.posts.count, 'gallery') %>
          </small>
        </div>
+       <% if @user.location? %>
+           Location: <%= @user.location %>
+       <% end %><br>
+       <% if @user.description? %>
+           About <%= @user.name %>: <%= @user.description %>
+       <% end %>
      </div>
+   </div>
+   <div class="col-md-8">
    </div>
  </div>
  
  <div class="row">
    <div class="tabbable tabs-left">
      <ul class="nav nav-tabs">
-       <li class="active"><a href="#posts" data-toggle="tab">Galleries</a></li>
+       <li class="active"><a href="#galleries" data-toggle="tab">Galleries</a></li>
+       <li><a href="#friends" data-toggle="tab">Friends</a></li>
+       <li><a href="#favorites" data-toggle="tab">Favorites</a></li>
      </ul>
      <div class="tab-content">
-       <div class="tab-pane active" id="posts">
-          <% @posts.each do |post| %>
-            <div class="media">
-               <div class="media-body">
-                 <h4 class="media-heading">
-                   <%= link_to (markdown_to_html post.title), topic_post_path(post.topic_id, post) %>
-                 </h4>
-                   <small>
-                     <%= image_tag(post.user.avatar.tiny.url) if post.user.avatar? %>
-                     submitted <%= time_ago_in_words(post.created_at) %> ago by
-                     <%= post.user.name %><br>
-                   </small>
-               </div>
-              </div>
-          <% end %>
+       <div class="tab-pane active" id="galleries">
+           <% if policy(Gallery.new(user: @user)).create? %>
+             <%= link_to "Add a photo gallery for #{@user.name}", new_user_gallery_path(@user), class: 'btn btn-success' %>
+           <% end %>
+          <%= render 'galleries/gallery' %>
+       </div>
+       <div class="tab-pane" id="friends">
+        This is where friends will go.
+       </div>
+       <div class="tab-pane" id="favorites">
+        <% @favorites.each do |favorite| %>
+          <div class="media">
+           <div class="media-body">
+             <h4 class="media-heading">
+               <%= link_to favorite.favorable.title, user_gallery_path(@user, favorite.favorable) %>
+             </h4>
+           </div>
+          </div>
+        <% end %> 
        </div>
      </div>
    </div>

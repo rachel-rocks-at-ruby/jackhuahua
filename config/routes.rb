@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  resources :users, only: [:update, :show, :index]
-  resources :topics do
-    resources :posts, except: [:index]
+  resources :users, only: [:index, :show, :update] do
+    resources :galleries, except: [:index]
   end
 
   resources :friendships, only: [:create, :destroy]
@@ -11,5 +10,5 @@ Rails.application.routes.draw do
 
   get 'about' => 'welcome#about'
   
-  root to: 'welcome#index'
+  root to: 'users#index'
 end

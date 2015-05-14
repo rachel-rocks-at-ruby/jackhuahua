@@ -10,7 +10,7 @@ gem 'rails', '4.1.6'
  end
  
  group :development do
- 	gem 'quiet_assets'
+   gem 'quiet_assets'
    gem 'sqlite3'
  end
 
@@ -46,3 +46,5 @@ gem 'fog'
 gem 'will_paginate', '~> 3.0.5'
 gem 'breadcrumbs_on_rails'
 gem 'filepicker-rails'
+gem 'faker'
+gem 'pry'
