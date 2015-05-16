@@ -20,8 +20,8 @@
      @galleries = @user.galleries
      @friends = Friendship.where(user_id: @user.id)
      @friend = Friendship.where(user_id: @user.id).first
+     @friend_if = Friendship.where(user_id: current_user.id, friend_id: @user.id).first if current_user
      @favorites = Favorite.where(user_id: @user.id)
-     #@friend_if = Friendship.where(user_id: current_user.id).first
    end
  
    private

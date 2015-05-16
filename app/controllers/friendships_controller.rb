@@ -2,7 +2,7 @@ class FriendshipsController < ApplicationController
   def create
     @friendship = current_user.friendships.build(friend_id: params[:friend_id])
     if @friendship.save
-      flash[:notice] = "Successfully followed user."
+      flash[:notice] = "Friending successful."
       redirect_to :back
     else
       flash[:notice] = "Failed to save."
@@ -13,7 +13,7 @@ class FriendshipsController < ApplicationController
   def destroy
     @friendship = Friendship.find(params[:id])
     @friendship.destroy
-      flash[:notice] = "Unfollowed user."
+      flash[:notice] = "Unfriended."
       redirect_to :back
   end
 end

@@ -8,7 +8,7 @@
        <% end %>
        <div class="media-body">
          <h2 class="media-heading"><%= @user.name %></h2>
-         <%#= render partial: 'users/follow' %><br>
+         <% if current_user %><%= render partial: 'users/follow' %><br><% end %>
          <small>
            <%#= pluralize(@user.posts.count, 'gallery') %>
          </small>
@@ -39,9 +39,22 @@
            <% end %>
           <%= render 'galleries/gallery' %>
        </div>
+       <% if current_user %>
        <div class="tab-pane" id="friends">
-        This is where friends will go.
-       </div>
+         <% @friends.each do |friend| %>
+            <div class="media">
+             <div class="media-body">
+               <h4 class="media-heading">
+                <p><%= link_to friend.friend.name, friend.friend %>
+                <% if @user == current_user %> 
+                  <%= link_to "Unfollow user", friend, method: :delete, class: 'btn btn-danger' %></p>
+                <% end %>
+               </h4>
+             </div>
+            </div>
+          <% end %> 
+        </div>
+       <% end %>
        <div class="tab-pane" id="favorites">
         <% @favorites.each do |favorite| %>
           <div class="media">

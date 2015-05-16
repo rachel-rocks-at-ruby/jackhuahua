@@ -7,7 +7,9 @@
        submitted <%= time_ago_in_words(@gallery.created_at) %> ago by
        <%= @gallery.user.name %>
      </small>
-     <%= render partial: 'favorites/favorite', locals: {favorable: @gallery} if current_user %>
+     <% if @gallery.user != current_user %>
+      <%= render partial: 'favorites/favorite', locals: {favorable: @gallery} if current_user %>
+      <% end %>
      <%#= image_tag(@post.image.url) if @post.image? %>
      <div id="images"><%#= filepicker_image_tag @post.filepicker_url, w: 160, h: 160, fit: 'clip' %></div>
 

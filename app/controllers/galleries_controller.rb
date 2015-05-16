@@ -36,7 +36,7 @@ class GalleriesController < ApplicationController
   end
 
   def edit
-    @dog = Dog.find(params[:dog_id])
+    @user = User.find(params[:user_id])
   	@gallery = Gallery.find(params[:id])
     authorize @gallery
   end

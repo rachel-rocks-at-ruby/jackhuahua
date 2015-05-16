@@ -1,7 +1,8 @@
-  <% unless @dog == current_user %>
+ 
+  <% unless @user == current_user %>
     <% if @friend_if %>
-      <%= link_to "Unfriend dog", "#{}",onclick: "alert('I dont do anything')", method: :delete, class: 'btn btn-danger'  %>
+      <%= link_to "Unfollow user", @friend_if, method: :delete, class: 'btn btn-danger'  %>
     <% else %>
-      <%= link_to "Friend dog", friendships_path(friend_id: @dog.id), method: :post, class: 'btn btn-primary'%>
+      <%= link_to "Follow this user", friendships_path(friend_id: @user), method: :post, class: 'btn btn-primary'%>
     <% end %>
   <% end %>
