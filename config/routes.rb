@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :galleries, except: [:index]
   end
 
+  resources :photos
+
   resources :friendships, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
 

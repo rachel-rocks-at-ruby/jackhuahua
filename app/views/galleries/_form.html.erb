@@ -1,4 +1,4 @@
- <%= form_for [user, gallery] do |f| %>
+ <%= form_for [user, gallery], :html => {:multipart => true} do |f| %>
    <% if gallery.errors.any? %>
      <div class="alert alert-danger">
        <h4>There are <%= pluralize(gallery.errors.count, "error") %>.</h4>
@@ -19,7 +19,7 @@
    <% end %>
   <%= form_group_tag(gallery.errors[:image]) do %>
     <%= f.label :filepicker_url, "Upload photos to gallery" %>
-    <%= f.filepicker_field :filepicker_url, multiple: true, rows: 1, class: 'form-control', placeholder: "Upload photos" %>
+    <%= file_field_tag "images[]", type: :file, multiple: true, class: 'form-control', placeholder: "Upload photos" %>
   <% end %>
    <div class="form-group">
     <%= f.hidden_field :user_id, value: @user.id %>

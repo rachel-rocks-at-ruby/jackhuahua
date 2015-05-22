@@ -27,6 +27,11 @@ class GalleriesController < ApplicationController
      authorize @gallery
 
      if @gallery.save
+        if params[:images]
+          params[:images].each { |image|
+            @gallery.photos.create(image: image)
+          }
+        end
        flash[:notice] = "Gallery was saved."
        redirect_to [@user, @gallery]
      else
@@ -47,6 +52,11 @@ class GalleriesController < ApplicationController
      authorize @gallery
      
      if @gallery.update_attributes(gallery_params)
+      if params[:images]
+        params[:images].each { |image|
+          @gallery.photos.create(image: image)
+        }
+      end
        flash[:notice] = "Gallery was updated."
        redirect_to [@user, @gallery]
      else
@@ -72,6 +82,6 @@ class GalleriesController < ApplicationController
   private
 
   def gallery_params
-    params.require(:gallery).permit(:title, :body, :user_id, :image, :filepicker_url)
+    params.require(:gallery).permit(:title, :body, :user_id)
   end
 end
