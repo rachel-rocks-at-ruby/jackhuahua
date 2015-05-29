@@ -1,0 +1,18 @@
+<h1>The Jackhuahua Forum</h1>
+
+<% if policy(Topic.new).create? %>
+    <%= link_to "Add a forum topic", new_topic_path, class: 'btn btn-success' %>
+<% end %>
+
+<% @topics.each do |topic| %>
+    <div class="media">
+      <div class="media-body">
+        <h4 class="media-heading">
+          <%= link_to topic.title, topic %>
+        </h4>
+        <small>
+          submitted <%= time_ago_in_words(topic.created_at) %> ago by <%= topic.user.name %><br>
+        </small>
+      </div>
+    </div>
+<% end %>

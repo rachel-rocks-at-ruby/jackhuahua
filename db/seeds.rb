@@ -24,6 +24,16 @@ require 'faker'
  end
  galleries = Gallery.all
 
+ # Create Topics
+10.times do
+  topic = Topic.create!(
+      user:   users.sample,
+      title:  Faker::Lorem.sentence,
+      body:   Faker::Lorem.paragraph
+  )
+end
+topics = Topic.all
+
  # Create an admin user
  admin = User.new(
    name:     'Admin User',
@@ -46,3 +56,4 @@ require 'faker'
 puts "Seed finished"
 puts "#{User.count} users created"
 puts "#{Gallery.count} galleries created"
+puts "#{Topic.count} topics created"

@@ -31,6 +31,7 @@
        <li class="active"><a href="#galleries" data-toggle="tab">Galleries</a></li>
        <li><a href="#friends" data-toggle="tab">Friends</a></li>
        <li><a href="#favorites" data-toggle="tab">Favorites</a></li>
+       <li><a href="#topics" data-toggle="tab">Forum Topics</a></li>
      </ul>
      <div class="tab-content">
        <div class="tab-pane active" id="galleries">
@@ -66,6 +67,19 @@
           </div>
         <% end %> 
        </div>
+       <% if current_user %>
+           <div class="tab-pane" id="topics">
+             <% @topics.each do |topic| %>
+                 <div class="media">
+                   <div class="media-body">
+                     <h4 class="media-heading">
+                       <p><%= link_to topic.title, topic %>
+                         </h4>
+                   </div>
+                 </div>
+             <% end %>
+           </div>
+       <% end %>
      </div>
    </div>
  </div>

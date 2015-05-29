@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   end
 
   resources :photos
+  resources :topics
 
   resources :friendships, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]

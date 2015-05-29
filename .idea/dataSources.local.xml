@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails jackhuahua: development" uuid="244758d9-48f8-4f77-9329-fa8c2fa05235">
+      <first-sync>true</first-sync>
+    </data-source>
+    <data-source name="Rails jackhuahua: test" uuid="e34b2377-dd9d-4a62-bf1d-fbe96c4929d8">
+      <first-sync>true</first-sync>
+    </data-source>
+  </component>
+</project>

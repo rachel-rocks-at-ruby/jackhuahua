@@ -1,0 +1,38 @@
+<h1>New Forum Topic for <%= @user.name %></h1>
+
+<div class="row">
+  <div class="col-md-4">
+    <p>Guidelines for forum topics</p>
+    <ul>
+      <li>Ask questions clearly.</li>
+      <li>Feel free to post about events in your area.</li>
+    </ul>
+  </div>
+  <div class="col-md-8">
+    <%= form_for @topic do |f| %>
+        <% if @topic.errors.any? %>
+            <div class="alert alert-danger">
+              <h4>There are <%= pluralize(topic.errors.count, "error") %>.</h4>
+              <ul>
+                <% topic.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+        <%= form_group_tag(@topic.errors[:title]) do %>
+            <%= f.label :title %>
+            <%= f.text_field :title, class: 'form-control', placeholder: "Enter forum topic" %>
+        <% end %>
+        <%= form_group_tag(@topic.errors[:body]) do %>
+            <%= f.label :body %>
+            <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter detail" %>
+        <% end %>
+        <div class="form-group">
+          <%= f.hidden_field :user_id, value: @user.id %>
+          <%= f.submit "Save", class: 'btn btn-success' %>
+        </div>
+    <% end %>
+  </div>
+</div>
+

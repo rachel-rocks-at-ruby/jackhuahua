@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="Rails jackhuahua: development" uuid="244758d9-48f8-4f77-9329-fa8c2fa05235">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source name="Rails jackhuahua: test" uuid="e34b2377-dd9d-4a62-bf1d-fbe96c4929d8">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+</component>

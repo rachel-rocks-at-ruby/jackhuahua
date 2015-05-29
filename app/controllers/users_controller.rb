@@ -22,6 +22,7 @@
      @friend = Friendship.where(user_id: @user.id).first
      @friend_if = Friendship.where(user_id: current_user.id, friend_id: @user.id).first if current_user
      @favorites = Favorite.where(user_id: @user.id)
+     @topics = Topic.where(user_id: @user.id)
    end
  
    private

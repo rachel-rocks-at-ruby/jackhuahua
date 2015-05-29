@@ -1,0 +1,38 @@
+<h1><%= @topic.title %></h1>
+
+<div class="row">
+  <div class="col-md-8">
+    <small>
+      <%= image_tag(@topic.user.avatar.tiny.url) if @topic.user.avatar? %>
+      submitted <%= time_ago_in_words(@topic.created_at) %> ago by
+      <%= @topic.user.name %>
+    </small>
+    <% if @topic.user != current_user %>
+        <%= render partial: 'favorites/favorite', locals: {favorable: @topic} if current_user %>
+    <% end %><br>
+
+    <p><%= markdown_to_html @topic.body %></p>
+  </div>
+  <div class="col-md-4">
+    <% if policy(@topic).edit? %>
+        <%= link_to "Edit topic", edit_topic_path(@user, @topic), class: 'btn btn-success' %>
+    <% end %>
+    <% if policy(@topic).destroy? %>
+        <%= link_to "Delete topic", [@topic], method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this topic?' } %>
+    <% end %>
+  </div>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'jackhuahua';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>

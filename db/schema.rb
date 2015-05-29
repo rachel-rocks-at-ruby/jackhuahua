@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518022122) do
+ActiveRecord::Schema.define(version: 20150529201508) do
 
   create_table "favorites", force: true do |t|
     t.integer  "favorable_id"
@@ -43,6 +43,14 @@ ActiveRecord::Schema.define(version: 20150518022122) do
   create_table "photos", force: true do |t|
     t.integer  "gallery_id"
     t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "topics", force: true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
