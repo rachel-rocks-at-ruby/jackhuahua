@@ -87,6 +87,8 @@ GEM
       fog-core
       fog-json
     formatador (0.2.5)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     hike (1.2.3)
     i18n (0.7.0)
     inflecto (0.0.2)
@@ -198,6 +200,7 @@ DEPENDENCIES
   figaro (= 1.0)
   filepicker-rails
   fog (= 1.23.0)
+  friendly_id (~> 5.1.0)
   jbuilder (~> 2.0)
   jquery-rails
   mini_magick

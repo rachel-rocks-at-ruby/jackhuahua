@@ -35,9 +35,9 @@
      </ul>
      <div class="tab-content">
        <div class="tab-pane active" id="galleries">
-           <% if policy(Gallery.new(user: @user)).create? %>
+         <% if current_user == @user %>
              <%= link_to "Add a photo gallery for #{@user.name}", new_user_gallery_path(@user), class: 'btn btn-success' %>
-           <% end %>
+         <% end %>
           <%= render 'galleries/gallery' %>
        </div>
        <% if current_user %>

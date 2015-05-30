@@ -16,7 +16,7 @@
    end
 
    def show
-     @user = User.find(params[:id])
+     @user = User.friendly.find(params[:id])
      @galleries = @user.galleries
      @friends = Friendship.where(user_id: @user.id)
      @friend = Friendship.where(user_id: @user.id).first
@@ -28,6 +28,6 @@
    private
  
    def user_params
-     params.require(:user).permit(:name, :avatar, :role, :description, :location)
+     params.require(:user).permit(:name, :avatar, :role, :description, :location, :slug)
    end
  end

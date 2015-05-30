@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150529201508) do
+ActiveRecord::Schema.define(version: 20150530000508) do
 
   create_table "favorites", force: true do |t|
     t.integer  "favorable_id"
@@ -22,6 +22,19 @@ ActiveRecord::Schema.define(version: 20150529201508) do
   end
 
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id"
+
+  create_table "friendly_id_slugs", force: true do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
 
   create_table "friendships", force: true do |t|
     t.integer  "user_id"
@@ -78,6 +91,7 @@ ActiveRecord::Schema.define(version: 20150529201508) do
     t.string   "description"
     t.string   "location"
     t.date     "birthday"
+    t.string   "slug"
   end
 
   add_index "users", ["birthday"], name: "index_users_on_birthday"

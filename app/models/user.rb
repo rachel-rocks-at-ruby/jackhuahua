@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   has_many :galleries, dependent: :destroy
   has_many :dogs
   has_many :friendships, dependent: :destroy
