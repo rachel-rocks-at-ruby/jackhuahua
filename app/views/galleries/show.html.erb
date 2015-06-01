@@ -13,6 +13,9 @@
 
     <% @gallery.photos.each do |photo| %>
       <%= image_tag(photo.image) %>
+      <% if @gallery.user == current_user %>
+         <%= link_to "Delete image", photo, method: :delete, class: 'btn btn-danger' %>
+      <% end %>
     <% end %>
 
     <p><%= markdown_to_html @gallery.body %></p>

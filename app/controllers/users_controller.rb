@@ -18,9 +18,12 @@
    def show
      @user = User.friendly.find(params[:id])
      @galleries = @user.galleries
-     @friends = Friendship.where(user_id: @user.id)
+     @friendships = Friendship.where(user_id: @user.id)
      @friend = Friendship.where(user_id: @user.id).first
+
      @friend_if = Friendship.where(user_id: current_user.id, friend_id: @user.id).first if current_user
+
+
      @favorites = Favorite.where(user_id: @user.id)
      @topics = Topic.where(user_id: @user.id)
    end

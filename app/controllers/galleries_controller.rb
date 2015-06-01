@@ -5,7 +5,7 @@ class GalleriesController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:user_id])
+    @user = User.friendly.find(params[:user_id])
   	@gallery = Gallery.find(params[:id])
 
     @favorite = @gallery.favorites.where(user_id: current_user.id).first if current_user
@@ -16,13 +16,13 @@ class GalleriesController < ApplicationController
   end
 
   def new
-    @user = User.find(params[:user_id])
+    @user = current_user
   	@gallery = Gallery.new
     authorize @gallery
   end
 
   def create
-     @user = User.find(params[:user_id])
+     @user = current_user
      @gallery = current_user.galleries.build(gallery_params)
      authorize @gallery
 
@@ -41,13 +41,13 @@ class GalleriesController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:user_id])
+    @user = User.friendly.find(params[:user_id])
   	@gallery = Gallery.find(params[:id])
     authorize @gallery
   end
 
   def update
-     @user = User.find(params[:user_id])
+     @user = User.friendly.find(params[:user_id])
      @gallery = Gallery.find(params[:id])
      authorize @gallery
      
@@ -66,7 +66,7 @@ class GalleriesController < ApplicationController
   end
 
    def destroy
-     @user = User.find(params[:user_id])
+     @user = User.friendly.find(params[:user_id])
      @gallery = Gallery.find(params[:id])
      authorize @gallery
  
