@@ -11,15 +11,9 @@
       <%= render partial: 'favorites/favorite', locals: {favorable: @gallery} if current_user %>
       <% end %><br>
 
-    <% @gallery.photos.each do |photo| %>
-      <%= image_tag(photo.image) %>
-      <% if @gallery.user == current_user %>
-         <%= link_to "Delete image", photo, method: :delete, class: 'btn btn-danger' %>
-      <% end %>
-    <% end %>
-
     <p><%= markdown_to_html @gallery.body %></p>
   </div>
+
   <div class="col-md-4">
     <% if policy(@gallery).edit? %>
       <%= link_to "Edit gallery", edit_user_gallery_path(@user, @gallery), class: 'btn btn-success' %>
@@ -29,6 +23,38 @@
     <% end %>
   </div>
 </div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<ul class="row">
+
+    <% @gallery.photos.each do |photo| %>
+            <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+              <%= image_tag photo.image %>
+              <% if @gallery.user == current_user %>
+                  <%= link_to "Delete image", photo, method: :delete, class: 'btn btn-danger' %>
+              <% end %>
+            </li>
+
+    <% end %>
+
+      <script>
+          $("img").click(function(){
+              $("#myModal").modal("show");
+              $(".modal-body").html($(this).clone());
+          });
+      </script>
+</ul>
+
+
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">
