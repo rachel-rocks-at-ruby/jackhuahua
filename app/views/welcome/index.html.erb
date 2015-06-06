@@ -1,6 +1,32 @@
-<h1>Jackhuahua.com</h1>
-<h4><em>The home of Jack Russell/Chihuahua mixes.<em><h4>
-  <p>
-      <%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary' %> or
-      <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %> today!
-  </p>
+ <br/>
+  <div class="jumbotron">
+    <%= image_tag "lilli.jpg", alt: "Lilli", align: "left", hspace: "8", height: "180" %>
+    <h1>Jackhuahua.com</h1>
+    <p>The home of Jack Russell/Chihuahua mixes. </p>
+    <% if !current_user %>
+        <p>
+          <%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary' %> or
+          <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %> today!
+        </p>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <h2>Show off your Jackhuahua</h2>
+      <p>Make photo galleries for your beloved dog. If you've already signed in, go to your page to post!</p>
+      <% if current_user %>
+        <p><%= link_to "Create a photo gallery", new_user_gallery_path(current_user), class: 'btn btn-primary' %></p>
+      <% end %>
+    </div>
+    <div class="col-md-4">
+      <h2>Check out the other Jackhuahuas</h2>
+      <p>Plenty of other Jackhuahuas are posting, so admire their dogs and get to know them!</p>
+      <p><%= link_to "All the Jackhuahuas", users_path, class: 'btn btn-primary' %></p>
+    </div>
+    <div class="col-md-4">
+      <h2>Learn & post on the forums</h2>
+      <p>Here you can get more information about Jackhuahuas and learn from other Jackhuahua owners.</p>
+      <p><%= link_to "Forums", topics_path, class: 'btn btn-primary' %></p>
+    </div>
+  </div>

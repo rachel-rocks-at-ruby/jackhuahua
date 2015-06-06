@@ -1,13 +1,3 @@
-<h1>Jackhuahua.com</h1>
-<h4><em>The home of Jack Russell/Chihuahua mixes.<em><h4>
-  <% if !current_user %>
-	  <p>
-	      <%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary' %> or
-	      <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %> today!
-	  </p>
-  <% end %>
-
-
 <h1>The Jackhuahuas</h1>
 <% @users.each do |user| %>
    <div class="media">
