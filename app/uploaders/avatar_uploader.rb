@@ -25,7 +25,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  process :resize_to_fill => [200, 300]
+  process :resize_to_fit => [600, 900]
   #
   # def scale(width, height)
   #   # do something
@@ -33,15 +33,19 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
    version :tiny do
-     process resize_to_fill: [20, 20]
+     process resize_to_fit: [20, 20]
    end
  
    version :small do
-     process resize_to_fill: [30, 30]
+     process resize_to_fit: [30, 30]
    end
 
    version :profile do
-     process resize_to_fill: [45, 45]
+     process resize_to_fit: [45, 45]
+   end
+
+   version :bigger do
+     process resize_to_fit: [200, 200]
    end
 
   # Add a white list of extensions which are allowed to be uploaded.
