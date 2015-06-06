@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
+
   resources :users, only: [:index, :show, :update] do
     resources :galleries, except: [:index]
   end

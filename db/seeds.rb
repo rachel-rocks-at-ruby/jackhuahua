@@ -1,7 +1,7 @@
 require 'faker'
 
  # Create Users
- 5.times do
+ 25.times do
    user = User.new(
      name:     Faker::Name.first_name,
      email:    Faker::Internet.email,
@@ -25,7 +25,7 @@ require 'faker'
  galleries = Gallery.all
 
  # Create Topics
-10.times do
+25.times do
   topic = Topic.create!(
       user:   users.sample,
       title:  Faker::Lorem.sentence,
