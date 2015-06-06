@@ -60,6 +60,8 @@ GEM
       i18n (~> 0.5)
     figaro (1.0.0)
       thor (~> 0.14)
+    filepicker-rails (1.4.0)
+      rails (>= 3.2)
     fog (1.23.0)
       fog-brightbox
       fog-core (~> 1.23)
@@ -196,6 +198,7 @@ DEPENDENCIES
   devise
   faker
   figaro (= 1.0)
+  filepicker-rails
   fog (= 1.23.0)
   friendly_id (~> 5.1.0)
   jbuilder (~> 2.0)
