@@ -1,6 +1,7 @@
  <br/>
-  <div class="jumbotron">
-    <%= image_tag "lilli.jpg", alt: "Lilli", align: "left", hspace: "8", height: "180" %>
+  <div class="jumbotron" align="center">
+    <%= image_tag "toby.jpg", alt: "Toby", align: "left", hspace: "2", height: "210" %>
+    <%= image_tag "lilli2.jpg", alt: "Lilli", align: "right", hspace: "2", height: "210" %>
     <h1>Jackhuahua.com</h1>
     <p>The home of Jack Russell/Chihuahua mixes. </p>
     <% if !current_user %>
@@ -14,9 +15,11 @@
   <div class="row">
     <div class="col-md-4">
       <h2>Show off your Jackhuahua</h2>
-      <p>Make photo galleries for your beloved dog. If you've already signed in, go to your page to post!</p>
+      <p>Make photo galleries for your beloved dog.</p>
       <% if current_user %>
         <p><%= link_to "Create a photo gallery", new_user_gallery_path(current_user), class: 'btn btn-primary' %></p>
+      <% else %>
+          <p><%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary' %></p>
       <% end %>
     </div>
     <div class="col-md-4">
