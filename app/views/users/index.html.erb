@@ -1,12 +1,13 @@
 <h1>The Jackhuahuas</h1>
-<% @users.each do |user| %>
-   <div class="media">
-     <div class="media-body">
-       <h4 class="media-heading">
-        <%= image_tag(user.avatar.bigger.url) if user.avatar? %>
-         <%= link_to user.name, user %>
-       </h4>
-     </div>
-   </div>
-<% end %>
+    <% @users.each do |user| %>
+       <div class="media">
+         <div class="media-body">
+           <h4 class="media-heading">
+            <%= image_tag(user.avatar.bigger.url) if user.avatar? %>
+             <%= link_to user.name, user %>
+           </h4>
+         </div>
+       </div>
+    <% end %>
 <%= will_paginate @users %>
+

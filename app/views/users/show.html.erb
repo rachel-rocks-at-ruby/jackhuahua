@@ -1,11 +1,11 @@
  <div class="row">
-   <div class="col-md-8">
+   <% if @user.avatar? %>
+       <div class="media-left">
+         <%= image_tag @user.avatar.url, class: 'media-object' %>
+       </div>
+   <% end %>
+
      <div class="media">
-       <% if @user.avatar? %>
-         <div class="media-left">
-           <%= image_tag @user.avatar.url, class: 'media-object' %>
-         </div>
-       <% end %>
        <div class="media-body">
          <h2 class="media-heading"><%= @user.name %></h2>
          <% if current_user %><%= render partial: 'users/follow' %><br><% end %>
@@ -13,7 +13,7 @@
            <%#= pluralize(@user.posts.count, 'gallery') %>
          </small>
        </div>
-       <% if @user.location? %>friend
+       <% if @user.location? %>
            Location: <%= @user.location %>
        <% end %><br>
        <% if @user.description? %>
@@ -21,9 +21,6 @@
        <% end %>
      </div>
    </div>
-   <div class="col-md-8">
-   </div>
- </div>
  
  <div class="row">
    <div class="tabbable tabs-left">
