@@ -15,7 +15,7 @@
   </div>
   <div class="col-md-4">
     <% if policy(@topic).edit? %>
-        <%= link_to "Edit topic", edit_topic_path(@user, @topic), class: 'btn btn-success' %>
+        <%= link_to "Edit topic", edit_topic_path(@topic), class: 'btn btn-success' %>
     <% end %>
     <% if policy(@topic).destroy? %>
         <%= link_to "Delete topic", [@topic], method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this topic?' } %>

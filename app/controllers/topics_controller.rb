@@ -35,14 +35,14 @@ class TopicsController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
     @topic = Topic.find(params[:id])
+    @user = User.find(@topic.user_id)
     authorize @topic
   end
 
   def update
-    @user = User.find(params[:id])
     @topic = Topic.find(params[:id])
+    @user = User.find(@topic.user_id)
     authorize @topic
 
     if @topic.update_attributes(topic_params)
