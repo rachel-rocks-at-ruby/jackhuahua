@@ -1,0 +1,16 @@
+@media (min-width: 768px) {
+  .navbar {
+    height: 61px;
+  }
+
+  .navbar-brand {
+  line-height: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  #about-text {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
