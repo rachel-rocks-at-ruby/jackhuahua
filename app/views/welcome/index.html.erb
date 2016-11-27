@@ -1,45 +1,7 @@
-<!--   <div class="jumbotron" align="center">
-    <%#= image_tag "toby.jpg", alt: "Toby", align: "left", hspace: "2", height: "220", id: "pic" %>
-    <%#= image_tag "lilli2.jpg", alt: "Lilli", align: "right", hspace: "2", height: "220", id: "pic" %>
-    <h1>Jackhuahua.com</h1>
-    <p>The home of Jack Russell/Chihuahua mixes. </p>
-    <%# if !current_user %>
-        <p>
-          <%#= link_to "Sign In", new_user_session_path, class: 'btn btn-primary' %> or
-          <%#= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %> today!
-        </p>
-     <%# else %>
-        <p> <em>Thanks for joining us!</em></p>
-    <%# end %>
-  </div>
-
-  <div class="row">
-    <div class="col-md-4">
-      <h2>Show off your Jackhuahua</h2>
-      <p>Make photo galleries for your beloved dog.</p>
-      <%# if current_user %>
-        <p><%#= link_to "Create a photo gallery", new_user_gallery_path(current_user), class: 'btn btn-primary' %></p>
-      <%# else %>
-          <p><%#= link_to "Sign In", new_user_session_path, class: 'btn btn-primary' %></p>
-      <%# end %>
-    </div>
-    <div class="col-md-4">
-      <h2>Check out the other Jackhuahuas</h2>
-      <p>Plenty of other Jackhuahuas are posting, so admire their dogs and get to know them!</p>
-      <p><%#= link_to "All the Jackhuahuas", users_path, class: 'btn btn-primary' %></p>
-    </div>
-    <div class="col-md-4">
-      <h2>Learn & post on the forums</h2>
-      <p>Here you can get more information about Jackhuahuas and learn from other Jackhuahua owners.</p>
-      <p><%#= link_to "Forums", topics_path, class: 'btn btn-primary' %></p>
-    </div>
-  </div> -->
-
   <!-- Jumbotron Header -->
-        <header class="jumbotron hero-spacer">
-            <h1>Jackhuahua.com</h1>
-            <p>The home of Jack Russell/Chihuahua mixes.</p>
-            <p><%= link_to 'Get started!',new_user_registration_path, class: "btn btn-primary btn-large" %></p>
+        <header class="hero-spacer">
+            <h1 id="title">Jackhuahua.com</h1>
+            <h4 id="byline">The home of Jack Russell/Chihuahua mixes</h4>
         </header>
 
         <hr>
