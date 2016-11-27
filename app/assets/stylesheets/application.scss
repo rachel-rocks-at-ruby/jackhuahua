@@ -16,10 +16,6 @@
 
 @import "bootstrap-sprockets";
 
- .user-info {
-   margin-top: 9px;
- }
-
  .nav {
    margin-top: 5px;
  }
@@ -51,10 +47,13 @@ ul li img {
   width: 100%;
 }
 
-.jumbotron {
-  position: relative;
+.btn {
+  border-radius: 4px;
 }
 
-.jumbotron pic {
-  position: relative;
+.jumbotron {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-radius: 10px;
 }
