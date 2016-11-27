@@ -12,18 +12,27 @@
  *
  *= require_tree .
  *= require_self
- */ 
- 
+ */
+
 @import "bootstrap-sprockets";
-// @import "bootstrap";
 
  .user-info {
    margin-top: 9px;
  }
- 
+
  .nav {
    margin-top: 5px;
  }
+
+@media (min-width: 768px) {
+  .navbar {
+    height: 61px;
+  }
+
+  .navbar-brand {
+  line-height: 28px;
+  }
+}
 
 ul {
   padding:0 0 0 0;
