@@ -31,7 +31,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if current_user %>
-            <li><%= image_tag(current_user.avatar.tiny.url) if current_user.avatar? %> <%= link_to (current_user.name || current_user.email), current_user %></li>
+            <li><%= link_to (current_user.name || current_user.email), current_user %></li>
             <li><%= link_to "Edit", edit_user_registration_path %></li>
             <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
            <% else %>
