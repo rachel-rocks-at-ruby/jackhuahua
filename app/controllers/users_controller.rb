@@ -1,6 +1,6 @@
  class UsersController < ApplicationController
    before_action :authenticate_user!, except: [:index, :show]
- 
+
    def update
      if current_user.update_attributes(user_params)
        flash[:notice] = "User information updated"
@@ -12,7 +12,7 @@
    end
 
    def index
-     @users = User.paginate(page: params[:page], per_page: 10)
+     @users = User.paginate(page: params[:page], per_page: 15)
    end
 
    def show
@@ -27,9 +27,9 @@
      @favorites = Favorite.where(user_id: @user.id)
      @topics = Topic.where(user_id: @user.id)
    end
- 
+
    private
- 
+
    def user_params
      params.require(:user).permit(:name, :avatar, :role, :description, :location, :slug)
    end

@@ -7,7 +7,8 @@ require 'faker'
      email:    Faker::Internet.email,
      password: Faker::Lorem.characters(10),
      description: Faker::Lorem.paragraph,
-     location: Faker::Address.country
+     location: Faker::Address.country,
+     avatar: "IMG_2388.JPG"
    )
    user.skip_confirmation!
    user.save!
