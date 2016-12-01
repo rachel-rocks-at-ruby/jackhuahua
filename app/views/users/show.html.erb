@@ -1,27 +1,33 @@
  <div class="row">
    <% if @user.avatar? %>
-       <div class="media-left">
-         <%= image_tag @user.avatar.url, class: 'media-object' %>
+       <div class="col-md-6 col-xs-12">
+         <%= image_tag @user.avatar.url, class: 'media-object', style: 'border-radius: 10px; width: 100%;' %>
        </div>
+   <%# else %>
+       <!-- <div class="media-left">
+         #{@user.name} needs to add a profile picture.
+       </div> -->
    <% end %>
 
-     <div class="media">
+     <div class="col-md-6 col-xs-12">
        <div class="media-body">
-         <h2 class="media-heading"><%= @user.name %></h2>
-         <% if current_user %><%= render partial: 'users/follow' %><br><% end %>
-         <small>
+         <h2 class="media-heading" id="user-name"><%= @user.name %></h2>
+         <% if current_user %><%= render partial: 'users/follow' %><% end %>
+         <!-- <small>
            <%#= pluralize(@user.posts.count, 'gallery') %>
-         </small>
+         </small> -->
        </div>
        <% if @user.location? %>
-           Location: <%= @user.location %>
-       <% end %><br>
+           <h4 style="font-weight:500; color: #f04124;">Located in</h4>
+           <p><%= @user.location %></p>
+       <% end %>
        <% if @user.description? %>
-           About <%= @user.name %>: <%= @user.description %>
+           <h4 style="font-weight:500; color: #f04124;">About <%= @user.name %></h4>
+           <p><%= @user.description %><p>
        <% end %>
      </div>
    </div>
- 
+
  <div class="row">
    <div class="tabbable tabs-left">
      <ul class="nav nav-tabs">
@@ -52,7 +58,7 @@
                </h4>
              </div>
             </div>
-          <% end %> 
+          <% end %>
         </div>
        <% end %>
        <div class="tab-pane" id="favorites">
@@ -64,16 +70,14 @@
              </h4>
            </div>
           </div>
-        <% end %> 
+        <% end %>
        </div>
        <% if current_user %>
            <div class="tab-pane" id="topics">
              <% @topics.each do |topic| %>
                  <div class="media">
                    <div class="media-body">
-                     <h4 class="media-heading">
-                       <p><%= link_to topic.title, topic %>
-                         </h4>
+                     <div class="media-heading"><%= link_to topic.title, topic %><span> on <%= topic.created_at.strftime("%B %d %Y") %></span></div>
                    </div>
                  </div>
              <% end %>

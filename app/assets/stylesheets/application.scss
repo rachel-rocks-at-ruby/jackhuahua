@@ -16,13 +16,17 @@
 
 @import "bootstrap-sprockets";
 
- .nav {
-   margin-top: 5px;
-   #current-log-in {
+html, body {
+  height: 100%;
+}
+
+.nav {
+  margin-top: 5px;
+  #current-log-in {
     color: #f04124;
     font-weight: 600;
-   }
- }
+  }
+}
 
 ul {
   padding:0 0 0 0;
@@ -63,4 +67,11 @@ ul li img {
 
 #about-videos {
   margin-top: 15px;
+}
+
+.tabbable {
+  margin-top: 25px;
+  .nav-tabs {
+    margin-bottom: 15px;
+  }
 }
