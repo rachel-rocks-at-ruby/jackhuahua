@@ -2,13 +2,15 @@
   <div class="row" id="users-index">
     <% @users.each do |user| %>
 
-       <div class="col-xs-6 col-sm-4 col-lg-3">
+       <div class="user-column col-xs-6 col-sm-4 col-lg-3">
          <div>
           <% if user.avatar? %>
-            <%= link_to image_tag(user.avatar.bigger.url), user %>
+            <div class='user-image-container'>
+              <%= link_to image_tag(user.avatar.bigger.url, class: 'user-image'), user %>
+            </div>
           <% else %>
             <%= link_to user do %>
-              <div id="user-index-no-pic"><p>No image</p></div>
+              <div class="user-index-no-pic"><p>No image</p></div>
             <% end %>
           <% end %>
           <p><%= link_to user.name, user %></p>
@@ -18,3 +20,25 @@
     <% end %>
   </div>
 <%= will_paginate @users %>
+
+<style>
+@media (max-width: 500px) {
+ .user-index-no-pic {
+    height: 100px;
+    width: 125px;
+  }
+  .user-index-no-pic p {
+    padding-top: 40px;
+  }
+  .user-image-container {
+    height: 100px;
+    width: 125px;
+    overflow: hidden;
+  }
+  .user-image {
+    width: 100%;
+  }
+}
+</style>
+
+
