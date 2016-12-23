@@ -1,7 +1,16 @@
+<div>
+    <% if policy(@gallery).edit? %>
+      <%= link_to "Edit gallery", edit_user_gallery_path(@user, @gallery), class: 'btn btn-sm btn-success' %>
+    <% end %>
+    <% if policy(@gallery).destroy? %>
+       <%= link_to "Delete gallery", [@user, @gallery], method: :delete, class: 'btn btn-sm btn-danger', data: { confirm: 'Are you sure you want to delete this gallery?' } %>
+    <% end %>
+  </div>
+
 <h1><%= markdown_to_html @gallery.title %></h1>
 
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-xs-12">
   	 <small>
        <%= image_tag(@gallery.user.avatar.tiny.url) if @gallery.user.avatar? %>
        submitted <%= time_ago_in_words(@gallery.created_at) %> ago by
@@ -12,15 +21,6 @@
       <% end %><br>
 
     <p><%= markdown_to_html @gallery.body %></p>
-  </div>
-
-  <div class="col-md-4">
-    <% if policy(@gallery).edit? %>
-      <%= link_to "Edit gallery", edit_user_gallery_path(@user, @gallery), class: 'btn btn-success' %>
-    <% end %>
-    <% if policy(@gallery).destroy? %>
-       <%= link_to "Delete gallery", [@user, @gallery], method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this gallery?' } %>
-    <% end %>
   </div>
 </div>
 
@@ -35,83 +35,79 @@
 </div><!-- /.modal -->
 
 <ul class="row">
+  <% @gallery.photos.each do |photo| %>
+    <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+        <%= image_tag photo.image.index, style: 'border-radius: 10px;', data: {picture: "#{photo.image}" } %>
+      <% if @gallery.user == current_user %>
+        <%= link_to "Remove", photo, method: :delete, class: 'btn btn-xs btn-danger' %>
+      <% end %>
+    </li>
+  <% end %>
 
-    <% @gallery.photos.each do |photo| %>
-            <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
-              <%= image_tag photo.image %>
-              <% if @gallery.user == current_user %>
-                  <%= link_to "Delete image", photo, method: :delete, class: 'btn btn-danger' %>
-              <% end %>
-            </li>
+  <script>
+    $(document).ready(function(){
+      $('li img').on('click',function(){
+        var src = $(this).attr('data-picture');
+        var img = '<img src="' + src + '" class="img-responsive"/>';
 
-    <% end %>
+        //start of new code new code
+        var index = $(this).parent('li').index();
 
+        var html = '';
+        html += img;
+        html += '<div style="height:25px;clear:both;display:block;">';
+        html += '<a class="controls previous" href="' + (index) + '">&laquo; prev  </a>';
+        html += '<a class="controls next" href="'+ (index+2) + '">next &raquo;</a>';
+        html += '</div>';
 
-      <script>
-          $(document).ready(function(){
-              $('li img').on('click',function(){
-                  var src = $(this).attr('src');
-                  var img = '<img src="' + src + '" class="img-responsive"/>';
-
-                  //start of new code new code
-                  var index = $(this).parent('li').index();
-
-                  var html = '';
-                  html += img;
-                  html += '<div style="height:25px;clear:both;display:block;">';
-                  html += '<a class="controls previous" href="' + (index) + '">&laquo; prev  </a>';
-                  html += '<a class="controls next" href="'+ (index+2) + '">next &raquo;</a>';
-                  html += '</div>';
-
-                  $('#myModal').modal();
-                  $('#myModal').on('shown.bs.modal', function(){
-                      $('#myModal .modal-body').html(html);
-                      //new code
-                      $('a.controls').trigger('click');
-                  })
-                  $('#myModal').on('hidden.bs.modal', function(){
-                      $('#myModal .modal-body').html('');
-                  });
-              });
-          })
+        $('#myModal').modal();
+        $('#myModal').on('shown.bs.modal', function(){
+            $('#myModal .modal-body').html(html);
+            //new code
+            $('a.controls').trigger('click');
+        })
+        $('#myModal').on('hidden.bs.modal', function(){
+            $('#myModal .modal-body').html('');
+        });
+      });
+    })
 
 
-          $(document).on('click', 'a.controls', function(){
-              var index = $(this).attr('href');
-              var src = $('ul.row li:nth-child('+ index +') img').attr('src');
+    $(document).on('click', 'a.controls', function(){
+      var index = $(this).attr('href');
+      var src = $('ul.row li:nth-child('+ index +') img').attr('data-picture');
 
-              $('.modal-body img').attr('src', src);
+      $('.modal-body img').attr('src', src);
 
-              var newPrevIndex = parseInt(index) - 1;
-              var newNextIndex = parseInt(newPrevIndex) + 2;
+      var newPrevIndex = parseInt(index) - 1;
+      var newNextIndex = parseInt(newPrevIndex) + 2;
 
-              if($(this).hasClass('previous')){
-                  $(this).attr('href', newPrevIndex);
-                  $('a.next').attr('href', newNextIndex);
-              }else{
-                  $(this).attr('href', newNextIndex);
-                  $('a.previous').attr('href', newPrevIndex);
-              }
+      if($(this).hasClass('previous')){
+          $(this).attr('href', newPrevIndex);
+          $('a.next').attr('href', newNextIndex);
+      }else{
+          $(this).attr('href', newNextIndex);
+          $('a.previous').attr('href', newPrevIndex);
+      }
 
-              var total = $('ul.row li').length + 1;
-              //hide next button
-              if(total === newNextIndex){
-                  $('a.next').hide();
-              }else{
-                  $('a.next').show()
-              }
-              //hide previous button
-              if(newPrevIndex === 0){
-                  $('a.previous').hide();
-              }else{
-                  $('a.previous').show()
-              }
+      var total = $('ul.row li').length + 1;
+      //hide next button
+      if(total === newNextIndex){
+          $('a.next').hide();
+      }else{
+          $('a.next').show()
+      }
+      //hide previous button
+      if(newPrevIndex === 0){
+          $('a.previous').hide();
+      }else{
+          $('a.previous').show()
+      }
 
-
-              return false;
-          });
-      </script>
-</ul>
+      return false;
+    });
+  </script>
+<!-- </ul> -->
 
 
 
@@ -119,7 +115,7 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = 'jackhuahua';
-    
+
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

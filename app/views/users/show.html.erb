@@ -42,7 +42,7 @@
          <% if current_user == @user %>
              <%= link_to "Add a photo gallery for #{@user.name}", new_user_gallery_path(@user), class: 'btn btn-success' %>
          <% end %>
-          <%= render 'galleries/gallery' %>
+         <%= render 'galleries/gallery' %>
        </div>
        <% if current_user %>
        <div class="tab-pane" id="friends">
@@ -53,7 +53,7 @@
                  <!-- We need a link to the friend's user profile-->
                 <p><%= link_to friendship.friend.name, friendship.friend rescue "Corrupt Friendship" %>
                 <% if @user == current_user %>
-                  <%= link_to "Unfollow user", friendship, method: :delete, class: 'btn btn-danger' %></p>
+                  <%= link_to "Unfriend pup", friendship, method: :delete, class: 'btn btn-danger' %></p>
                 <% end %>
                </h4>
              </div>

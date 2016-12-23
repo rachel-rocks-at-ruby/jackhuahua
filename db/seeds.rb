@@ -16,7 +16,7 @@ require 'faker'
  users = User.all
 
  # Create Galleries
- 20.times do
+ 40.times do
    gallery = Gallery.create!(
      user:   users.sample,
      title:  Faker::Lorem.sentence,

@@ -50,7 +50,7 @@ class GalleriesController < ApplicationController
      @user = User.friendly.find(params[:user_id])
      @gallery = Gallery.find(params[:id])
      authorize @gallery
-     
+
      if @gallery.update_attributes(gallery_params)
       if params[:images]
         params[:images].each { |image|
@@ -69,7 +69,7 @@ class GalleriesController < ApplicationController
      @user = User.friendly.find(params[:user_id])
      @gallery = Gallery.find(params[:id])
      authorize @gallery
- 
+
      if @gallery.destroy
        flash[:notice] = "\"#{@gallery.title}\" was deleted successfully."
        redirect_to @user
