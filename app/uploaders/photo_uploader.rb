@@ -36,7 +36,13 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # version :thumb do
   #   process :resize_to_fit => [50, 50]
   # end
-    version :tiny do
+  def auto_orient
+    manipulate! do |img|
+      img = img.auto_orient
+    end
+  end
+
+   version :tiny do
      process resize_to_fill: [20, 20]
    end
 
@@ -49,6 +55,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
    end
 
    version :index do
+     process :auto_orient
      process resize_to_fill: [150, 150]
    end
 
