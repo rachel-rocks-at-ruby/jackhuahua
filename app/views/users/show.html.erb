@@ -1,12 +1,8 @@
  <div class="row">
    <% if @user.avatar? %>
-       <div class="col-sm-6 col-xs-12">
-         <%= image_tag @user.avatar.show.url, class: 'media-object', style: 'border-radius: 10px; width: 100%;' %>
-       </div>
-   <%# else %>
-       <!-- <div class="media-left">
-         #{@user.name} needs to add a profile picture.
-       </div> -->
+     <div class="col-sm-6 col-xs-12">
+       <%= image_tag @user.avatar.show.url, class: 'media-object', style: 'border-radius: 10px; width:100%' %>
+     </div>
    <% end %>
 
      <div class="col-sm-6 col-xs-12">
@@ -28,7 +24,7 @@
      </div>
    </div>
 
- <div class="row">
+ <div class="row" style='margin-bottom: 20px;'>
    <div class="tabbable tabs-left">
      <ul class="nav nav-tabs">
        <li class="active"><a href="#galleries" data-toggle="tab">Galleries</a></li>

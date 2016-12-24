@@ -12,10 +12,10 @@
     <%= form_for @topic do |f| %>
         <% if @topic.errors.any? %>
             <div class="alert alert-danger">
-              <h4>There are <%= pluralize(topic.errors.count, "error") %>.</h4>
+              <h4>There are <%= pluralize(@topic.errors.count, "error") %>.</h4>
               <ul>
-                <% topic.errors.full_messages.each do |msg| %>
-                    <li><%= msg %></li>
+                <% @topic.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
                 <% end %>
               </ul>
             </div>

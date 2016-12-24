@@ -35,14 +35,14 @@ class TopicsController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
     @topic = Topic.find(params[:id])
+    @user = User.find(@topic.user_id)
     authorize @topic
   end
 
   def update
-    @user = User.find(params[:id])
     @topic = Topic.find(params[:id])
+    @user = User.find(@topic.user_id)
     authorize @topic
 
     if @topic.update_attributes(topic_params)
@@ -55,13 +55,13 @@ class TopicsController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:user_id])
     @topic = Topic.find(params[:id])
+    @user = User.find(@topic.user_id)
     authorize @topic
 
     if @topic.destroy
       flash[:notice] = "\"#{@topic.title}\" was deleted successfully."
-      redirect_to forum_path
+      redirect_to topics_path
     else
       flash[:error] = "There was an error deleting the forum topic."
       render :show
