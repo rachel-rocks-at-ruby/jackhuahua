@@ -37,7 +37,7 @@
 <ul class="row">
   <% @gallery.photos.each do |photo| %>
     <li class="col-sm-3 col-xs-4">
-        <%= image_tag photo.image.index, style: 'border-radius: 10px;', data: {picture: "#{photo.image}" } %>
+        <%= image_tag photo.image.index, style: 'border-radius: 10px;', data: {picture: "#{photo.image.modal}" } %>
       <% if @gallery.user == current_user %>
         <%= link_to "Remove", photo, method: :delete, class: 'btn btn-xs btn-danger' %>
       <% end %>

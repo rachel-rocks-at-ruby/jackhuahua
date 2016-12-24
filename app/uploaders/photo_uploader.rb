@@ -54,6 +54,11 @@ class PhotoUploader < CarrierWave::Uploader::Base
      process resize_to_fill: [45, 45]
    end
 
+   version :modal do
+     process :auto_orient
+     process resize_to_fit: [500, 500]
+   end
+
    version :index do
      process :auto_orient
      process resize_to_fill: [150, 150]

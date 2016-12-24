@@ -1,7 +1,7 @@
  <div class="row">
    <% if @user.avatar? %>
        <div class="col-sm-6 col-xs-12">
-         <%= image_tag @user.avatar.url, class: 'media-object', style: 'border-radius: 10px; width: 100%;' %>
+         <%= image_tag @user.avatar.show.url, class: 'media-object', style: 'border-radius: 10px; width: 100%;' %>
        </div>
    <%# else %>
        <!-- <div class="media-left">
@@ -18,11 +18,11 @@
          </small> -->
        </div>
        <% if @user.location? %>
-           <h4 style="font-weight:500; color: #f04124;">Located in</h4>
+           <h4 class="user-show-description-title">Located in</h4>
            <p><%= @user.location %></p>
        <% end %>
        <% if @user.description? %>
-           <h4 style="font-weight:500; color: #f04124;">About <%= @user.name %></h4>
+           <h4 class="user-show-description-title">About <%= @user.name %></h4>
            <p><%= @user.description %><p>
        <% end %>
      </div>
@@ -37,15 +37,15 @@
        <li><a href="#topics" data-toggle="tab">Forum Topics</a></li>
      </ul>
      <div class="tab-content">
-       <div class="tab-pane active" id="galleries">
+       <div class="tab-pane container active" id="galleries">
          <!-- Change in policy -->
          <% if current_user == @user %>
-             <%= link_to "Add a photo gallery for #{@user.name}", new_user_gallery_path(@user), class: 'btn btn-success' %>
+             <%= link_to "Add photo gallery", new_user_gallery_path(@user), class: 'btn btn-sm btn-success' %>
          <% end %>
          <%= render 'galleries/gallery' %>
        </div>
        <% if current_user %>
-       <div class="tab-pane" id="friends">
+       <div class="tab-pane container" id="friends">
          <% @friendships.each do |friendship| %>
             <div class="media">
              <div class="media-body">
@@ -53,7 +53,7 @@
                  <!-- We need a link to the friend's user profile-->
                 <p><%= link_to friendship.friend.name, friendship.friend rescue "Corrupt Friendship" %>
                 <% if @user == current_user %>
-                  <%= link_to "Unfriend pup", friendship, method: :delete, class: 'btn btn-danger' %></p>
+                  <%= link_to "Unfriend", friendship, method: :delete, class: 'btn btn-xs btn-danger' %></p>
                 <% end %>
                </h4>
              </div>
@@ -61,7 +61,7 @@
           <% end %>
         </div>
        <% end %>
-       <div class="tab-pane" id="favorites">
+       <div class="tab-pane container" id="favorites">
         <% @favorites.each do |favorite| %>
           <div class="media">
            <div class="media-body">
@@ -73,7 +73,7 @@
         <% end %>
        </div>
        <% if current_user %>
-           <div class="tab-pane" id="topics">
+           <div class="tab-pane container" id="topics">
              <% @topics.each do |topic| %>
                  <div class="media">
                    <div class="media-body">
