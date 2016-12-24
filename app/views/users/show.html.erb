@@ -15,11 +15,11 @@
        </div>
        <% if @user.location? %>
            <h4 class="user-show-description-title">Located in</h4>
-           <p><%= @user.location %></p>
+           <p class="user-detail"><%= @user.location %></p>
        <% end %>
        <% if @user.description? %>
            <h4 class="user-show-description-title">About <%= @user.name %></h4>
-           <p><%= @user.description %><p>
+           <p class="user-detail"><%= @user.description %><p>
        <% end %>
      </div>
    </div>
