@@ -47,7 +47,7 @@
              <div class="media-body">
                <h4 class="media-heading">
                  <!-- We need a link to the friend's user profile-->
-                <p><%= link_to friendship.friend.name, friendship.friend rescue "Corrupt Friendship" %>
+                <p><%= link_to friendship.friend.name, friendship.friend rescue "Corrupt Friendship" %> <span style='font-size:12px;'> since <%= friendship.friend.created_at.strftime("%B %d %Y") %> </span>
                 <% if @user == current_user %>
                   <%= link_to "Unfriend", friendship, method: :delete, class: 'btn btn-xs btn-danger' %></p>
                 <% end %>
@@ -62,6 +62,7 @@
           <div class="media">
            <div class="media-body">
              <h4 class="media-heading">
+               <p style='font-style:italic; font-size:12px;'>List of favorite forum posts.</p>
                <%= link_to favorite.favorable.title, user_gallery_path(@user, favorite.favorable) %>
              </h4>
            </div>
