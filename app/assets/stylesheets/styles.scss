@@ -1,0 +1,81 @@
+// About
+
+#sparky-pic-about {
+  border-radius: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+#about-videos {
+  margin-top: 15px;
+}
+
+// User Show
+
+.tabbable {
+  margin-top: 25px;
+  .nav-tabs {
+    margin-bottom: 15px;
+  }
+}
+
+// User Index
+#users-index img {
+  border-radius: 10px;
+}
+
+.user-index-no-pic {
+  height: 150px;
+  width: 200px;
+  background-color: lightgrey;
+  border-radius: 10px;
+  text-align: center;
+  p {
+    padding-top: 60px;
+    color: gray;
+  }
+}
+
+// User Edit
+.avatar {
+  border-radius: 10px;
+}
+
+// User Show
+.user-show-description-title {
+  font-weight:500;
+  color: #f04124;
+}
+
+// Footer
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by it's height */
+  margin: 0 auto -40px;
+}
+
+/* Set the fixed height of the footer here */
+#push,
+#footer {
+  height: 40px;
+}
+#footer {
+  background-color: #f5f5f5;
+}
+
+p.credit {
+  margin-top: 10px;
+  font-size: 12px;
+  color: darkgray;
+}
+
+// Gallery New and Edit
+.gallery-guidelines {
+  font-size: 12px;
+  li {
+    margin-left: 5px;
+    margin-bottom: 5px;
+  }
+}
