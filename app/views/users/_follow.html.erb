@@ -1,8 +1,7 @@
-
-  <% unless @user == current_user %>
-    <% if @friend_if %>
-      <%= link_to "Unfriend this pup", @friend_if, method: :delete, class: 'btn btn-danger'  %>
-    <% else %>
-      <%= link_to "Friend this pup", friendships_path(friend_id: @user.id), method: :post, class: 'btn btn-primary'%>
-    <% end %>
+<% unless @user == current_user %>
+  <% if @friend_if %>
+    <%= link_to "Unfriend this pup", @friend_if, method: :delete, class: 'btn btn-danger'  %>
+  <% else %>
+    <%= link_to "Friend this pup", friendships_path(friend_id: @user.id), method: :post, class: 'btn btn-primary'%>
   <% end %>
+<% end %>

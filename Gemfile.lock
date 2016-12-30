@@ -88,6 +88,8 @@ GEM
     fog-softlayer (0.4.6)
       fog-core
       fog-json
+    font-awesome-rails (4.7.0.1)
+      railties (>= 3.2, < 5.1)
     formatador (0.2.5)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
@@ -219,6 +221,7 @@ DEPENDENCIES
   figaro (= 1.0)
   filepicker-rails
   fog (= 1.23.0)
+  font-awesome-rails
   friendly_id (~> 5.1.0)
   jbuilder (~> 2.0)
   jquery-rails

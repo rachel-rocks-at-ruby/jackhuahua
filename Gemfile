@@ -49,3 +49,4 @@ gem 'faker'
 gem 'pry'
 gem 'friendly_id', '~> 5.1.0'
 gem 'omniauth-facebook'
+gem "font-awesome-rails"

@@ -8,7 +8,12 @@
      <div class="col-sm-6 col-xs-12">
        <div class="media-body">
          <h2 class="media-heading" id="user-name"><%= @user.name %></h2>
-         <% if current_user %><%= render partial: 'users/follow' %><% end %>
+         <% if current_user %>
+          <%= render partial: 'users/follow' %>
+         <% end %>
+         <% if current_user && current_user != @user %>
+          <%= render partial: 'flags/flag', locals: { source: @user } %>
+         <% end %>
          <!-- <small>
            <%#= pluralize(@user.posts.count, 'gallery') %>
          </small> -->

@@ -11,14 +11,17 @@
 
 <div class="row">
   <div class="col-xs-12">
-  	 <small>
-       <%= image_tag(@gallery.user.avatar.tiny.url) if @gallery.user.avatar? %>
-       submitted <%= time_ago_in_words(@gallery.created_at) %> ago by
-       <%= @gallery.user.name %>
-     </small>
+    <div>
+    	 <small>
+         <%= image_tag(@gallery.user.avatar.tiny.url) if @gallery.user.avatar? %>
+         submitted <%= time_ago_in_words(@gallery.created_at) %> ago by
+         <%= @gallery.user.name %>
+       </small>
+     </div>
      <% if @gallery.user != current_user %>
       <%= render partial: 'favorites/favorite', locals: {favorable: @gallery} if current_user %>
-      <% end %><br>
+      <%= render partial: 'flags/flag', locals: { source: @gallery } %>
+      <% end %>
 
     <p><%= markdown_to_html @gallery.body %></p>
   </div>

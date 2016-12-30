@@ -11,8 +11,9 @@ Rails.application.routes.draw do
 
   resources :friendships, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
+  resources :flags, only: [:create, :destroy]
 
   get 'about' => 'welcome#about'
-  
+
   root to: 'welcome#index'
 end

@@ -2,14 +2,17 @@
 
 <div class="row">
   <div class="col-md-8">
-    <small>
-      <%= image_tag(@topic.user.avatar.tiny.url) if @topic.user.avatar? %>
-      submitted <%= time_ago_in_words(@topic.created_at) %> ago by
-      <%= @topic.user.name %>
-    </small>
+    <div>
+      <small>
+        <%= image_tag(@topic.user.avatar.tiny.url) if @topic.user.avatar? %>
+        submitted <%= time_ago_in_words(@topic.created_at) %> ago by
+        <%= @topic.user.name %>
+      </small>
+    </div>
     <% if @topic.user != current_user %>
         <%= render partial: 'favorites/favorite', locals: {favorable: @topic} if current_user %>
-    <% end %><br>
+        <%= render partial: 'flags/flag', locals: { source: @topic } %>
+    <% end %>
 
     <p><%= markdown_to_html @topic.body %></p>
   </div>

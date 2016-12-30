@@ -1,11 +1,13 @@
 <div class="favorite">
   <% if @favorite %>
-    <%= link_to "Unfavorite", favorite_path(@favorite), method: :delete, class: 'btn btn-danger' %>
+    <%= link_to '<i class="fa fa-thumbs-down" aria-hidden="true"></i>'.html_safe, favorite_path(@favorite), method: :delete, class: 'btn btn-danger', title: 'Click to un-favorite', 'data-toggle' => 'tooltip', 'data-placement' => 'right' %>
   <% else %>
     <%= form_for Favorite.new do |f| %>
       <%= f.hidden_field :favorable_id, value: favorable.id %>
       <%= f.hidden_field :favorable_type, value: favorable.class %>
-      <%= button_tag("Favorite", :class => 'btn btn-primary') %>
+      <%= button_tag "Favorite", :class => "btn btn-sm btn-primary", title: 'Click to favorite', 'data-toggle' => 'tooltip', 'data-placement' => 'right' do %>
+        <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+      <% end %>
     <% end %>
   <% end %>
 </div>

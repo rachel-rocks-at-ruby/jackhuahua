@@ -42,6 +42,10 @@
 }
 
 // User Show
+#new_flag {
+  display: inline-block;
+}
+
 .user-show-description-title {
   font-weight:500;
   color: #f04124;
@@ -78,4 +82,14 @@ p.credit {
     margin-left: 5px;
     margin-bottom: 5px;
   }
+}
+
+// New favorite
+#new_favorite {
+  display: inline-block;
+}
+
+// Favorite div
+.favorite {
+  display: inline-block;
 }

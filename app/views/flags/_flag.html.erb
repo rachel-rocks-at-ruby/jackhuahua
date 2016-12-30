@@ -1,0 +1,14 @@
+<% if current_user %>
+
+  <% flag = Flag.where(flagged_id: source.id, flagged_type: source.class, user_id: current_user.id).first %>
+  <% if flag.present? %>
+    <%= link_to '<i class="fa fa-flag" aria-hidden="true"></i>'.html_safe, flag_path(flag), method: :delete, class: "btn btn-xs btn-danger", title: 'Un-flag this post', 'data-toggle' => 'tooltip', 'data-placement' => 'right', data: { confirm: 'Are you sure you want to un-flag this post?' } %>
+  <% else %>
+    <%= form_for Flag.new do |f| %>
+      <%= f.hidden_field :flagged_id, value: source.id %>
+      <%= f.hidden_field :flagged_type, value: source.class %>
+      <%= button_tag '<i class="fa fa-flag" aria-hidden="true"></i>'.html_safe, :class => "btn btn-xs btn-default", title: 'Flag this forum post', 'data-toggle' => 'tooltip', 'data-placement' => 'right', data: { confirm: "Are you sure you want to flag this #{source.class}?" } %>
+    <% end %>
+  <% end %>
+
+<% end %>
