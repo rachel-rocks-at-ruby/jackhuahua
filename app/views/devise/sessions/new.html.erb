@@ -12,7 +12,7 @@
         <%= f.label :password %>
         <%= f.password_field :password, class: 'form-control', placeholder: "Enter password" %>
       </div>
-      <div class="form-group">
+      <div class="form-group sign-in">
         <% if devise_mapping.rememberable? %>
           <%= f.label :remember_me, class: 'checkbox' do %>
             <%= f.check_box :remember_me %> Remember me

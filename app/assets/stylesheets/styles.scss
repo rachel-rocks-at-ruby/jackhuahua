@@ -11,7 +11,6 @@
 }
 
 // User Show
-
 .tabbable {
   margin-top: 25px;
   .nav-tabs {
@@ -84,12 +83,16 @@ p.credit {
   }
 }
 
-// New favorite
+// Favorite div (partial)
+.favorite {
+  display: inline-block;
+}
+
 #new_favorite {
   display: inline-block;
 }
 
-// Favorite div
-.favorite {
-  display: inline-block;
+// Devise Sessions Sew
+.sign-in .checkbox {
+  padding-left: 20px;
 }
