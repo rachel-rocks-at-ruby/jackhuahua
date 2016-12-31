@@ -14,7 +14,7 @@
                   <%= image_tag "lilli.jpg", alt: "Lilli" %>
                   <div class="caption">
                       <h3>Show off your Jackhuahua</h3>
-                      <p>Make a profile and put together photo galleries of your beloved dog.</p>
+                      <h6>Make a profile and add photo galleries.</h6>
                       <p>
                       <% if current_user %>
                         <%= link_to "Create a photo gallery", new_user_gallery_path(current_user), class: 'btn btn-primary' %>
@@ -31,9 +31,9 @@
                     <%= image_tag "daisytrixie.jpg", alt: "Daisy and her best friend Trixie" %>
                     <div class="caption">
                         <h3>Visit the Jackhuahua community</h3>
-                        <p>Plenty of other Jackhuahuas owners are posting, so admire their dogs and get to know them!</p>
+                        <h6>Admire the dogs and get to know them!</h6>
                         <p>
-                            <%= link_to "All the Jackhuahuas", users_path, class: 'btn btn-primary' %>
+                          <%= link_to "All the Jackhuahuas", users_path, class: 'btn btn-primary' %>
                         </p>
                     </div>
                 </div>
@@ -41,10 +41,10 @@
 
             <div class="col-md-4 col-sm-6 hero-feature">
                 <div class="thumbnail">
-                    <%= image_tag "paws.jpg", alt: "paws" %>
+                    <%= image_tag "paws2.jpg", alt: "paws" %>
                     <div class="caption">
                         <h3>Browse & post on the forums</h3>
-                        <p>Here you can share information about Jackhuahuas and learn from other Jackhuahua owners.</p>
+                        <h6>Share information about Jackhuahuas.</h6>
                         <p>
                           <%= link_to "Go to Forums", topics_path, class: 'btn btn-primary' %>
                         </p>
